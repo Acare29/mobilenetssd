@@ -5,7 +5,7 @@ import cv2
 import numpy as np
 import json
 import requests
-import tempfile, shutil, os
+import tempfile, shutil, o
 from PIL import Image
 from io import BytesIO
 
@@ -154,10 +154,13 @@ def event_handle(event):
         elif msg == "กินข้าวมั้ยคะ" :
              replyObj = TextSendMessage(text="ไม่กินค่ะ")
         elif msg == "ไปเที่ยวกันมั้ย" :
-              replyObj = TextSendMessage(text="ไปดิ")
+             replyObj = TextSendMessage(text="ไปดิ")
         else:
-              replyObj = TextSendMessage(text="msg")
-        line_bot_api.reply_message(rtoken, replyObj)
+              headers = request.headers
+              json_headers = ({k:v for k, v in headers.items()})
+              json_headers.update({'Host':'bots.dialogflow.com'})
+              url = ""
+              requests.post(url,data=json_line, headers=json_headers)
     elif msgType == "image" :
         try:
             message_content = line_bot_api.get_message_content(event['message']['id'])
