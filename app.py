@@ -159,7 +159,7 @@ def event_handle(event):
               headers = request.headers
               json_headers = ({k:v for k, v in headers.items()})
               json_headers.update({'Host':'bots.dialogflow.com'})
-              url = ""
+              url = ""https://dialogflow.cloud.google.com/v1/integrations/line/webhook/7f1e3666-7819-49c3-b43f-cedb8b1b5972
               requests.post(url,data=json_line, headers=json_headers)
     elif msgType == "image" :
         try:
